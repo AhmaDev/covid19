@@ -1,0 +1,236 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+
+      {{ folder }}
+    
+    </ion-title>
+
+    <ion-item *ngIf="folder != 'worldwide' && flagImg(folder) != undefined" slot="end">
+      <img width="32px" [src]="'https://www.countryflags.io/' + flagImg(folder) + '/flat/64.png'">
+    </ion-item>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+
+  <div  id="cardscontainer" *ngIf="folder == 'worldwide'">
+
+
+
+    <ion-grid fixed>
+      <ion-row>
+
+
+        <ion-col size-sm="4">
+          <ion-card mode="ios">
+            <ion-card-content>
+              <ion-item>
+                <ion-icon color="warning" size="large" slot="start" name="people-outline"></ion-icon>
+                <ion-label color="warning">Total cases</ion-label>
+                <ion-badge *ngIf="info.country != ''" color="warning" mode="ios" slot="end">{{info.cases | number}}</ion-badge>
+                <ion-spinner color="warning" *ngIf="info.country == ''" slot="end"></ion-spinner>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size-sm="4">
+          <ion-card mode="ios">
+            <ion-card-content>
+              <div style="text-align: center;">
+                
+              </div>
+              <ion-item>
+                <ion-icon slot="start" color="danger" size="large" name="skull-outline"></ion-icon>
+                <ion-label color="danger">Deaths</ion-label>
+                <ion-badge *ngIf="info.country != ''" color="danger" mode="ios" slot="end">{{info.deaths | number}}</ion-badge>
+                <ion-spinner color="danger" *ngIf="info.country == ''" slot="end"></ion-spinner>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+
+        <ion-col size-sm="4">
+          <ion-card mode="ios">
+            <ion-card-content>
+              <div style="text-align: center;">
+                
+              </div>
+              <ion-item>
+                <ion-icon slot="start" color="success" size="large" name="medkit-outline"></ion-icon>
+                <ion-label color="success">Recovered</ion-label>
+                <ion-badge *ngIf="info.country != ''" color="success" mode="ios" slot="end">{{info.recovered | number}}</ion-badge>
+                <ion-spinner color="success" *ngIf="info.country == ''" slot="end"></ion-spinner>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+
+      </ion-row>
+    </ion-grid>
+
+
+
+  </div>
+
+  <div *ngIf="folder != 'worldwide'">
+    
+
+    <ion-grid fixed>
+      <ion-row>
+
+
+        <ion-col size-sm="4">
+          <ion-card mode="ios">
+            <ion-card-content>
+              <div style="text-align: center;">
+               
+              </div>
+              <ion-item>
+                <ion-icon slot="start" color="warning" size="large" name="people-outline"></ion-icon>
+                <ion-label color="warning">Total cases</ion-label>
+                <ion-badge *ngIf="info.country != ''" color="warning" mode="ios" slot="end">{{info.cases | number}}</ion-badge>
+                <ion-spinner color="warning" *ngIf="info.country == ''" slot="end"></ion-spinner>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size-sm="4">
+          <ion-card mode="ios">
+            <ion-card-content>
+              <div style="text-align: center;">
+               
+              </div>
+              <ion-item>
+                <ion-icon slot="start" color="danger" size="large" name="skull-outline"></ion-icon>
+                <ion-label color="danger">Deaths</ion-label>
+                <ion-badge *ngIf="info.country != ''" color="danger" mode="ios" slot="end">{{info.deaths | number}}</ion-badge>
+                <ion-spinner color="danger" *ngIf="info.country == ''" slot="end"></ion-spinner>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+
+        <ion-col size-sm="4">
+          <ion-card mode="ios">
+            <ion-card-content>
+              <div style="text-align: center;">
+                
+              </div>
+              <ion-item>
+                <ion-icon slot="start" color="success" size="large" name="medkit-outline"></ion-icon>
+                <ion-label color="success">Recovered</ion-label>
+                <ion-badge *ngIf="info.country != ''" color="success" mode="ios" slot="end">{{info.recovered | number}}</ion-badge>
+                <ion-spinner color="success" *ngIf="info.country == ''" slot="end"></ion-spinner>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+
+
+
+
+        <ion-col size-sm="4">
+          <ion-card mode="ios">
+            <ion-card-content>
+              <div style="text-align: center;">
+                
+              </div>
+              <ion-item>
+                <ion-icon slot="start" color="warning" size="large" name="today-outline"></ion-icon>
+                <ion-label color="warning">Today cases</ion-label>
+                <ion-badge *ngIf="info.country != ''" color="warning" mode="ios" slot="end">{{info.todayCases | number}}</ion-badge>
+                <ion-spinner color="warning" *ngIf="info.country == ''" slot="end"></ion-spinner>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size-sm="4">
+          <ion-card mode="ios">
+            <ion-card-content>
+              <div style="text-align: center;">
+               
+              </div>
+              <ion-item>
+                <ion-icon slot="start" color="danger" size="large" name="skull-outline"></ion-icon>
+                <ion-label color="danger">Today deaths</ion-label>
+                <ion-badge *ngIf="info.country != ''" color="danger" mode="ios" slot="end">{{info.todayDeaths | number}}</ion-badge>
+                <ion-spinner color="danger" *ngIf="info.country == ''" slot="end"></ion-spinner>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+
+        <ion-col size-sm="4">
+          <ion-card mode="ios">
+            <ion-card-content>
+              <div style="text-align: center;">
+                
+              </div>
+              <ion-item>
+                <ion-icon slot="start" color="primary" size="large" name="alert-circle-outline"></ion-icon>
+                <ion-label color="primary">Active</ion-label>
+                <ion-badge *ngIf="info.country != ''" color="primary" mode="ios" slot="end">{{info.active | number}}</ion-badge>
+                <ion-spinner color="primary" *ngIf="info.country == ''" slot="end"></ion-spinner>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+
+        <ion-col size-sm="4">
+          <ion-card mode="ios">
+            <ion-card-content>
+              <div style="text-align: center;">
+                
+              </div>
+              <ion-item>
+                <ion-icon slot="start" color="primary" size="large" name="alert-circle-outline"></ion-icon>
+                <ion-label color="primary">Cases per 100 person</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label color="dark" *ngIf="info.country != ''">{{info.casesPerOneMillion / 100000}}%</ion-label>
+                <ion-spinner color="primary" *ngIf="info.country == ''"></ion-spinner>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+
+
+      </ion-row>
+    </ion-grid>
+
+
+
+  </div>
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title style="font-size: 16px;">
+      <small>Made with ❤️ in Iraq by <b>AhmaDev</b></small>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="about()">
+        <ion-icon slot="start" name="information-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
